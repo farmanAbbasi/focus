@@ -43,8 +43,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     
      this._data.goal.subscribe(res => this.goals = res);
-     this.itemCount=this.goals.length;
+    this.itemCount=this.goals.length;
      this._data.changeGoal(this.goals);
+    // this.itemCount=this.goals.length;
   
   }
   addItemBro()
@@ -58,6 +59,7 @@ export class HomeComponent implements OnInit {
   {
     this.goals.splice(i, 1);
     this._data.changeGoal(this.goals);
+    this.itemCount=this.goals.length;
   }
 
 }
