@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
-
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -34,30 +34,30 @@ import { trigger,style,transition,animate,keyframes,query,stagger } from '@angul
 })
 export class HomeComponent implements OnInit {
 
-  countBro: number;
+  itemCount: number;
   btnBro: string='Add your goal';
-  goalBro: string='My life is mine';
-  goals = ['my life my goal','climb mountain','fly to every country possible'];
-    constructor() { }
+  goalText: string='My life is mine';
+  goals = [];
+    constructor(private _data: DataService) { }
 
   ngOnInit() {
     
-  
-    this.countBro=this.goals.length;
+     this._data.goal.subscribe(res => this.goals = res);
+     this.itemCount=this.goals.length;
+     this._data.changeGoal(this.goals);
   
   }
   addItemBro()
   {
-    this.goals.push(this.goalBro);
-    this.goalBro="";
-    this.countBro=this.goals.length;
-    
+    this.goals.push(this.goalText);
+    this.goalText = '';
+    this.itemCount = this.goals.length;
+    this._data.changeGoal(this.goals);
   }
   removeItemBro(i)
   {
-    this.goals.splice(i,1);
-    this.countBro=this.goals.length;
-    
+    this.goals.splice(i, 1);
+    this._data.changeGoal(this.goals);
   }
 
 }
