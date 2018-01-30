@@ -3,5 +3,23 @@
   <li><a routerLink="">Home</a></li><!--<li><a routerLink="homewa">Home</a></li>-->
   <li><a routerLink="about/48">About</a></li>
 </ul>
+<input type="text" (keyup)="onNameKeyUp($event)"><!--5-->
+<button class="btnMe" 
+  (click)="getProfile()">Enter userId to get title
+</button><!--7 -->
+
+<!--<div *ngIf="found" >
+  <span>
+    the title is : {{titleData[0]}}
+  </span>
+</div>
+<br><br>-->
+<div *ngFor="let t of titleData ; let i = index">
+    <span>
+     {{i+1}}: {{t}}<br><br>
+    </span>
+  </div><br>
+
+
 
 <router-outlet></router-outlet>
