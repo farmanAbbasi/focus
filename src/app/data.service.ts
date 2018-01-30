@@ -10,7 +10,7 @@ export class DataService {
   constructor() { }
 
   changeGoal(goal) {
-    this.goals.next(goal)
+    this.goals.next(goal);
   }
 
 }

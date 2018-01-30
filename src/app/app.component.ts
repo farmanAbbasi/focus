@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';//3
 })
 export class AppComponent {
   id:number;
-  count:number=0;
+  
  titleData = [];
   found:boolean;
   title = 'app';
@@ -37,20 +37,27 @@ getProfile()//8
       {
         this.titleData[this.i]=data[this.i].title;
         this.found=true;
-        this.count++;
+        
       }
         
-      } 
-      
-     
+      }
      }
    )
-
-
-
-
-   
   }
-
+  //..........................................................post
+  postProfile()//8
+  {
+   console.log(this.id);
+   this.httpClient.post(`https://jsonplaceholder.typicode.com/posts/`,
+  [
+    {name:'hello farman'},{name:'pooja'}]
+  )
+   .subscribe(
+     (data:any)=>{
+      console.log(data);  
+      
+     }
+   )
+  }
 
 }
